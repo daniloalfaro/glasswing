@@ -1,0 +1,38 @@
+es:
+  activerecord:
+    models:
+      user:
+        one: "Usuario"
+        other: "Usuarios"
+      specialty:
+        one: "Especialidad"
+        other: "Especialidades"
+      ingredient:
+        one: "Ingrediente"
+        other: "Ingredientes"
+      size:
+        one: "Tamaño"
+        other: "Tamaños"
+      comment:
+        one: "Comentario"
+        other: "Comentarios"
+      branch:
+        one: "Sucursal"
+        other: "Sucursales"
+      admin_user:
+        one: "Administrador"
+        other: "Administradores"
+    attributes:
+      user:
+        email: "Correo Electrónico"
+      specialty:
+        name: "Nombre"
+        description: "Descripción"
+        price: "Precio"
+        created_at: "Fecha de creación"
+        updated_at: "Fecha de actualización"
+      ingredient:
+        name: "Nombre"
+        price: "Precio"
+        created_at: "Fecha de creación"
+        updated_at: "Fecha de actualización"

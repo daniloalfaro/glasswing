@@ -1,0 +1,26 @@
+.row
+  .col-12
+    - if notice
+      .d-block.alert.alert-success= notice
+    - if alert
+      .d-block.alert.alert-danger
+        %ol
+        - alert.each do |a|
+          %li=a
+.row
+  .col-3
+  .col-6
+    = form_with(model: @pizza, url: user_pizzas_path(current_user), local: true) do |f|
+      .form-group
+        = f.text_field :name, class: 'form-control'
+      .form-group
+        = f.collection_select(:size_id, @sizes, :id, :name, {},
+          {:class=>'form-control'})
+      .form-group
+        = f.collection_select(:specialty_id, @specialties, :id, :name, {},
+          {:class=>'form-control'})
+      .form-group
+        = f.text_area :description, class: 'form-control'
+      .form-group
+        = f.submit "Crear", class: "btn btn-primary"
+  .col-3

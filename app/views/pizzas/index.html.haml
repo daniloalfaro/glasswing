@@ -1,0 +1,35 @@
+.row
+  .col-12
+    - if notice
+      .d-block.alert.alert-success= notice
+.row
+  .col-2
+  .col-8
+  .col-2
+    %a.btn.btn-primary{:href => "#{new_user_pizza_path(current_user)}", :role => "button"} Nueva Pizza
+
+.row
+  .col-2
+  .col-8
+    %table.table
+      %thead
+        %tr
+          %th{:scope => "col"} Nombre
+          %th{:scope => "col"} Descripcion
+          %th{:scope => "col"} Tamaño
+          %th{:scope => "col"} Especialidad
+          %th{:scope => "col"} Ingredientes
+        %tbody
+          - @pizzas.each do |pizza|
+            %tr
+              %td
+                =pizza.name
+              %td
+                =pizza.description
+              %td
+                =pizza.size ? pizza.size.name : ''
+              %td
+                =pizza.specialty ? pizza.specialty.name : 'Personalizada'
+              %td
+
+  .col-2
