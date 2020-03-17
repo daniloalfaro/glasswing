@@ -1,0 +1,3 @@
+= render partial: "notifications"
+= form_with(model: @pizza, url: user_pizza_path(current_user, @pizza), local: true) do |f|
+  = render partial: "form", locals: {f: f}

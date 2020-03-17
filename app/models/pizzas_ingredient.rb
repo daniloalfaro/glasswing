@@ -1,0 +1,2 @@
+class PizzasIngredient < ApplicationRecord
+end

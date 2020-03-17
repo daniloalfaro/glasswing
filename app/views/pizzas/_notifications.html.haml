@@ -1,0 +1,15 @@
+.row
+  .col-12
+    - if notice
+      .alert.alert-success.alert-dismissible.fade.show{:role => "alert"}
+        = notice
+        %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+
+    - if alert
+      .alert.alert-danger.alert-dismissible.fade.show{:role => "alert"}
+        %ol
+          - alert.each do |a|
+            %li=a
+        %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+          %span{"aria-hidden" => "true"} ×

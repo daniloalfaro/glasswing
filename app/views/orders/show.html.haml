@@ -1,0 +1,30 @@
+.row
+  .col-12
+    %h1
+      = t("labels.my_order")
+.row
+  .col-12
+    %table.table.table-striped
+      %thead
+        %tr
+          %th{:scope => "col", :width => "25%"} Nombre
+          %th{:scope => "col", :width => "25%"} Precio
+          %th{:scope => "col", :width => "25%"} Cantidad
+          %th{:scope => "col", :width => "25%"} Total
+      %tbody
+        - @order.line_items.each do |line_item|
+          %tr
+            %td
+              = line_item.pizza.name
+            %td
+              = number_to_currency(line_item.pizza.price_final, locale: :en)
+            %td
+              = line_item.quantity
+            %td
+              = number_to_currency(line_item.total_price, locale: :en)
+        %tr
+          %td
+          %td
+          %td
+          %td
+            = number_to_currency(@order.sub_total, locale: :en)

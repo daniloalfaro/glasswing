@@ -1,0 +1,40 @@
+.row
+  .col-12
+    %h1
+      = t("labels.my_cart")
+.row
+  .col-12
+    %table.table.table-striped
+      %thead
+        %tr
+          %th{:scope => "col", :width => "20%"} Nombre
+          %th{:scope => "col", :width => "20%"} Precio
+          %th{:scope => "col", :width => "20%"} Cantidad
+          %th{:scope => "col", :width => "20%"} Total
+          %th{:scope => "col", :width => "20%"}
+      %tbody
+        - @cart.line_items.each do |line_item|
+          %tr
+            %td
+              = line_item.pizza.name
+            %td
+              = number_to_currency(line_item.pizza.price_final, locale: :en)
+            %td
+              = line_item.quantity
+            %td
+              = number_to_currency(line_item.total_price, locale: :en)
+            %td
+              .btn-group
+                %a.btn.btn-outline-info{href: "#{user_line_item_add_path(:id => line_item)}", 'data-method': "post", role: "button"}
+                  %i.fa.fa-plus-square
+                %a.btn.btn-outline-primary{href: "#{user_line_item_reduce_path(:id => line_item)}", 'data-method': "post", role: "button"}
+                  %i.fa.fa-minus-square
+                %a.btn.btn-outline-danger{href: "#{user_line_item_path(current_user, line_item)}", 'data-method': "delete", :role => "button"}
+                  %i.fa.fa-backspace
+        %tr
+          %td
+          %td
+          %td
+          %td
+            %a{href: "#{user_orders_path}", 'data-method': "post", :role => "button"}
+              = number_to_currency(@cart.sub_total, locale: :en)

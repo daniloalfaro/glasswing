@@ -9,6 +9,9 @@
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
 
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+
+
   %body
     %nav.navbar.navbar-expand-md.navbar-dark.bg-dark.navbar-static-top
 
@@ -25,14 +28,23 @@
             .dropdown-menu{"aria-labelledby" => "dropdown01"}
               - if current_user
                 %a.dropdown-item{:href => "#{user_pizzas_url(current_user)}"} Mis pizzas
-                %a.dropdown-item{:href => "#{user_pizzas_url(current_user)}"} Pedidos
+                %a.dropdown-item{:href => "#{user_orders_url(current_user)}"} Mis Pedidos
                 %a.dropdown-item{:href => "#{destroy_user_session_url}", :'data-method' => "delete"} Salir
               - else
                 %a.dropdown-item{:href => "#{new_user_session_url}"} Iniciar sesión
 
+        - if current_user
+          %ul.navbar-nav.float-left
+            %li.nav-item.active
+              %a.nav-link{:href => "#{user_cart_url(current_user, @current_cart)}"}
+                %i.fa.fa-shopping-cart
+                = number_to_currency(@current_cart.sub_total, locale: :en)
+
+        = link_to image_tag("spain-icon.png"), "?locale=es"
+        = link_to image_tag("usa-icon.png"), "?locale=en"
+        = link_to image_tag("france-icon.png"), "?locale=fr"
 
 
     %main.mt-5.container{:role => "main"}
       .starter-template
-
         = yield

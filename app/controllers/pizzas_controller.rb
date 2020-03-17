@@ -15,41 +15,50 @@ class PizzasController < ApplicationController
     @pizza = Pizza.new
     @sizes = Size.all
     @specialties = Specialty.all
+    @ingredients = Ingredient.all
   end
 
-  def edit; end
+  def edit
+    @sizes = Size.all
+    @specialties = Specialty.all
+    @ingredients = Ingredient.all
+  end
 
   def create
     @pizza = Pizza.new(pizza_params)
     @pizza.user_id = current_user.id
+    @pizza.ingredients = [] unless @pizza.specialty.nil?
 
     if @pizza.save
       redirect_to user_pizzas_url(current_user),
-        notice: 'Pizza was successfully created.'
+                  notice: t("labels.pizza_created")
     else
-      puts "====================================> #{@pizza.errors.full_messages}"
       flash.now[:alert] = @pizza.errors.full_messages
       @sizes = Size.all
       @specialties = Specialty.all
+      @ingredients = Ingredient.all
       render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @pizza.update(pizza_params)
-        format.html do
-          redirect_to @pizza, notice: 'Pizza was successfully updated.'
-        end
-      else
-        format.html { render :edit }
-      end
+    if @pizza.update(pizza_params)
+      @pizza.ingredients = [] unless @pizza.specialty.nil?
+
+      redirect_to user_pizzas_url(current_user),
+                  notice: t("labels.pizza_updated")
+    else
+      flash.now[:alert] = @pizza.errors.full_messages
+      @sizes = Size.all
+      @specialties = Specialty.all
+      @ingredients = Ingredient.all
+      render :edit
     end
   end
 
   def destroy
     @pizza.destroy
-    redirect_to pizzas_url, notice: 'Pizza was successfully destroyed.'
+    redirect_to user_pizzas_url, notice: t("labels.pizza_destroyed")
   end
 
   private
@@ -60,6 +69,7 @@ class PizzasController < ApplicationController
 
   def pizza_params
     params.require(:pizza).permit(
-      :name, :description, :specialty_id, :size_id, :user_id)
+      :name, :description, :specialty_id, :size_id, :user_id, ingredient_ids: []
+    )
   end
 end

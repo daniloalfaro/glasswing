@@ -1,0 +1,18 @@
+.btn-group{"aria-label" => "buttonbar", :role => "group"}
+  %button.btn.btn-primary{"aria-controls" => "pizza_ingredients",
+                          "aria-expanded" => "false",
+                          "data-target" => ".multi-collapse",
+                          "data-toggle" => "collapse",
+                          :type => "button"}
+    %i.fa.fa-cheese
+    =t "labels.ingredients"
+
+  %button.btn.btn-info{"aria-controls" => "pizza_specialties",
+                          "aria-expanded" => "false",
+                          "data-target" => ".multi-collapse",
+                          "data-toggle" => "collapse",
+                          :type => "button"}
+    %i.fa.fa-pizza-slice
+    =t "labels.specialty"
+
+  = f.submit t("labels.save"), class: "btn btn-success"

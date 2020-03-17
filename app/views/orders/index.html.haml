@@ -1,0 +1,21 @@
+.row
+  .col-12
+    %h1
+      = t("labels.my_orders")
+.row
+  .col-12
+    %table.table.table-striped
+      %thead
+        %tr
+          %th{:scope => "col", :width => "30%"} Fecha
+          %th{:scope => "col", :width => "40"} usuario
+          %th{:scope => "col", :width => "30%"} Total
+      %tbody
+        - @orders.each do |order|
+          %tr
+            %td
+              = link_to(l(order.created_at, format: :long), user_order_path(current_user, order))
+            %td
+              = link_to(order.user.email, user_order_path(current_user, order))
+            %td
+              = link_to number_to_currency(order.sub_total, locale: :en), user_order_path(current_user, order)

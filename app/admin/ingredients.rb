@@ -1,5 +1,6 @@
-ActiveAdmin.register Ingredient do
+# frozen_string_literal: true
 
+ActiveAdmin.register Ingredient do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -15,6 +16,19 @@ ActiveAdmin.register Ingredient do
   #   permitted
   # end
 
-  permit_params :name, :price
+  permit_params :name, :price, :image
 
+  form partial: 'form'
+
+  show do
+    attributes_table do
+      row :name
+      row :price
+      row :image do |ad|
+        if ad.image.attachment
+          image_tag url_for(ad.image)
+        end
+      end
+    end
+  end
 end

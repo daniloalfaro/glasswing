@@ -1,35 +1,40 @@
-.row
-  .col-12
-    - if notice
-      .d-block.alert.alert-success= notice
-.row
-  .col-2
-  .col-8
-  .col-2
-    %a.btn.btn-primary{:href => "#{new_user_pizza_path(current_user)}", :role => "button"} Nueva Pizza
+= render partial: "notifications"
 
 .row
-  .col-2
-  .col-8
-    %table.table
+  .col-12
+    %a.btn.btn-success{href: "#{new_user_pizza_path(current_user)}", role: "button"}
+      %i.fa.fa-pizza-slice
+      = t("labels.new_pizza")
+
+.row
+  .col-12
+    %table.table.table-striped
       %thead
         %tr
-          %th{:scope => "col"} Nombre
-          %th{:scope => "col"} Descripcion
-          %th{:scope => "col"} Tamaño
-          %th{:scope => "col"} Especialidad
-          %th{:scope => "col"} Ingredientes
+          %th{:scope => "col", :width => "20%"}=t("activerecord.attributes.pizza.name")
+          %th{:scope => "col", :width => "15%"}=t("activerecord.attributes.pizza.size_id")
+          %th{:scope => "col", :width => "10%"}=t("activerecord.attributes.pizza.specialty_id")
+          %th{:scope => "col", :width => "25%"}=t("activerecord.attributes.pizza.ingredients")
+          %th{:scope => "col", :width => "15%"}=t("activerecord.attributes.pizza.price")
+          %th{:scope => "col", :width => "5%"}
         %tbody
           - @pizzas.each do |pizza|
             %tr
               %td
                 =pizza.name
               %td
-                =pizza.description
-              %td
                 =pizza.size ? pizza.size.name : ''
               %td
                 =pizza.specialty ? pizza.specialty.name : 'Personalizada'
               %td
-
-  .col-2
+                = pizza.ingredients.any? ? pizza.ingredient_names : ""
+              %td
+                = number_to_currency(pizza.price_final, locale: :en)
+              %td
+                .btn-group
+                  %a.btn.btn-outline-info{href: "#{user_line_items_path(current_user, pizza_id: pizza)}", 'data-method': "post", role: "button"}
+                    %i.fa.fa-dollar-sign
+                  %a.btn.btn-outline-primary{href: "#{edit_user_pizza_path(current_user, pizza)}", role: "button"}
+                    %i.fa.fa-pencil-alt
+                  %a.btn.btn-outline-danger{href: "#{user_pizza_path(current_user, pizza)}", 'data-method': "delete", :role => "button"}
+                    %i.fa.fa-backspace

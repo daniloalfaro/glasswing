@@ -1,0 +1,25 @@
+.row
+  .col-6
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control', placeholder: t("labels.pizza_name")
+    .form-group
+      = f.label :description
+      = f.text_area :description, class: 'form-control', placeholder: t("labels.description")
+  .col-6
+    .form-group
+      = f.label :size_id
+      = f.collection_select(:size_id, @sizes, :id, :name_price, {},
+        {:class=>'form-control'})
+
+    #pizza_specialties.form-group.show.multi-collapse
+      = f.label :specialty_id
+      = f.collection_select(:specialty_id, @specialties, :id, :name_price, {include_blank: t("labels.customized")},
+        {:class=>'form-control'})
+    .form-group
+      = render partial: "buttonbar", locals: {f: f}
+.row
+  .col-12
+    #pizza_ingredients.form-group.text-center.collapse.multi-collapse
+      = f.collection_check_boxes( :ingredient_ids, @ingredients, :id, :name, bootstrap: {check_inline: true}, class: "custom-control-input") do |i|
+        = i.label(:"data-value" => i.value, class: "") { image_tag(url_for(i.object.image), class: "d-block") + " " + i.check_box + i.text + " " + number_to_currency(i.object.price, locale: :en) }

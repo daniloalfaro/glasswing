@@ -36,3 +36,10 @@ es:
         price: "Precio"
         created_at: "Fecha de creación"
         updated_at: "Fecha de actualización"
+      pizza:
+        name: "Nombre"
+        description: Descripción
+        size_id: Tamaño
+        specialty_id: Especialidad
+        ingredients: Ingredientes
+        price: Precio
