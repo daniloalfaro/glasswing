@@ -26,7 +26,7 @@ end
 # file:///home/drakedalfa/projects/glasswing/rails2/pizzapp/db/seed_images/tomatoes.jpg
 # file:///home/drakedalfa/projects/glasswing/rails2/pizzapp/db/seed_images/tomatoesjpg
 
-["Beef", "Cheesse", "Pepeperoni", "Peppers", "Pineapple", "Salame", "Tomatoes"].each do |ingredient|
+%w[Beef Cheesse Pepeperoni Peppers Pineapple Salame Tomatoes].each do |ingredient|
   Ingredient.create(
     name: ingredient,
     price: rand(0.01..6.99)
@@ -63,6 +63,28 @@ end
     name: info,
     description: info,
     specialty_id: Specialty.pluck(:id).sample,
+    size_id: Size.pluck(:id).sample
+  )
+end
+
+40.times do
+  user = User.pluck(:id).sample
+  info = Faker::Food.dish + ' ' + Faker::Food.dish
+  ingredients_count = Ingredient.count
+  ingredient_ids = Ingredient.pluck(:id)
+  ingredients = []
+
+  how_many_ingredients = rand(1..ingredients_count)
+
+  how_many_ingredients.times do
+    ingredients.push ingredient_ids.sample
+  end
+
+  Pizza.create(
+    user_id: user,
+    name: info,
+    description: info,
+    ingredient_ids: ingredients.uniq,
     size_id: Size.pluck(:id).sample
   )
 end

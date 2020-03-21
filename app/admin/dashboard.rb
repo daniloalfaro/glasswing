@@ -15,7 +15,7 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel t("labels.frequent_clients") do
           ul do
-            Order.joins(:user).group("users.email").count.each do |k, v|
+            Order.joins(:user).group("users.email").count.reverse_each do |k, v|
               li "#{k} / #{v} #{t("labels.orders")}"
             end
           end
