@@ -95,7 +95,7 @@ end
   pizzas = User.find(user_id).pizzas.pluck(:id)
   cart = Cart.create
 
-  unless User.find(user_id).pizzas.count == 0
+  if User.find(user_id).pizzas.count == 0
     3.times do
       info = Faker::Food.dish
 
