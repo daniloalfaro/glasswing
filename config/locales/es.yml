@@ -217,19 +217,3 @@ es:
       long: "%-d de %B de %Y %H:%M"
       short: "%-d de %b %H:%M"
     pm: pm
-
-
-  labels:
-    ingredients: Ingredientes
-    specialty: Especialidad
-    save: Guardar
-    pizza_name: Coloca el nombre de tu pizza
-    pizza_description: Describe tu pizza
-    customized: Personalizada
-    new_pizza: Nueva Pizza
-    pizza_created: Pizza creada
-    pizza_updated: Pizza actualizada
-    pizza_destroyed: Pizza eliminada
-    my_cart: Mi carrito de compras
-    my_order: Mi recibo
-    my_orders: Mis pedidos

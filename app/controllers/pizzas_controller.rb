@@ -28,6 +28,7 @@ class PizzasController < ApplicationController
     @pizza = Pizza.new(pizza_params)
     @pizza.user_id = current_user.id
     @pizza.ingredients = [] unless @pizza.specialty.nil?
+    @pizza.total = @pizza.price_final
 
     if @pizza.save
       redirect_to user_pizzas_url(current_user),
@@ -43,7 +44,10 @@ class PizzasController < ApplicationController
 
   def update
     if @pizza.update(pizza_params)
+      @pizza.user_id = current_user.id
       @pizza.ingredients = [] unless @pizza.specialty.nil?
+      @pizza.total = @pizza.price_final
+      @pizza.save
 
       redirect_to user_pizzas_url(current_user),
                   notice: t("labels.pizza_updated")
@@ -69,7 +73,7 @@ class PizzasController < ApplicationController
 
   def pizza_params
     params.require(:pizza).permit(
-      :name, :description, :specialty_id, :size_id, :user_id, ingredient_ids: []
+      :total, :name, :description, :specialty_id, :size_id, :user_id, ingredient_ids: []
     )
   end
 end

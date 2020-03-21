@@ -1,0 +1,15 @@
+
+.row
+  .col-12
+    %table.table.table-striped
+      %thead
+        %tr
+          %th{:scope => "col", :width => "35%"}=t("activerecord.attributes.branch.name")
+          %th{:scope => "col", :width => "65%"}=t("activerecord.attributes.branch.address")
+        %tbody
+          - @branches.each do |branch|
+            %tr
+              %td
+                =branch.name
+              %td
+                =branch.address

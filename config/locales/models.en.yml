@@ -1,0 +1,48 @@
+es:
+  activerecord:
+    models:
+      user:
+        one: "User"
+        other: "Users"
+      specialty:
+        one: "Specialty"
+        other: "Specialities"
+      ingredient:
+        one: "Ingredient"
+        other: "Ingredients"
+      size:
+        one: "Size"
+        other: "Sizes"
+      comment:
+        one: "Comment"
+        other: "Comments"
+      branch:
+        one: "branch"
+        other: "branches"
+      admin_user:
+        one: "Admin"
+        other: "Admins"
+    attributes:
+      user:
+        email: "email"
+      specialty:
+        name: "Name"
+        description: "Description"
+        price: "Price"
+        created_at: "Creation date"
+        updated_at: "Update date"
+      ingredient:
+        name: "Name"
+        price: "Price"
+        created_at: "Creation date"
+        updated_at: "update date"
+      pizza:
+        name: "Name"
+        description: Description
+        size_id: Size
+        specialty_id: Especiality
+        ingredients: Ingredients
+        price: Price
+      branch:
+        name: Name
+        address: Address

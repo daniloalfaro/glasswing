@@ -71,3 +71,6 @@ gem 'faker'
 
 # haml
 gem 'haml-rails', '~> 2.0'
+
+gem 'tr4n5l4te'
+

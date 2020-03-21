@@ -29,6 +29,7 @@
               - if current_user
                 %a.dropdown-item{:href => "#{user_pizzas_url(current_user)}"} Mis pizzas
                 %a.dropdown-item{:href => "#{user_orders_url(current_user)}"} Mis Pedidos
+                %a.dropdown-item{:href => "#{user_branches_url(current_user)}"} Sucursales
                 %a.dropdown-item{:href => "#{destroy_user_session_url}", :'data-method' => "delete"} Salir
               - else
                 %a.dropdown-item{:href => "#{new_user_session_url}"} Iniciar sesión
@@ -42,7 +43,7 @@
 
         = link_to image_tag("spain-icon.png"), "?locale=es"
         = link_to image_tag("usa-icon.png"), "?locale=en"
-        = link_to image_tag("france-icon.png"), "?locale=fr"
+        -#= link_to image_tag("france-icon.png"), "?locale=fr"
 
 
     %main.mt-5.container{:role => "main"}

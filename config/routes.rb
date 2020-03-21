@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :pizzas
     resources :orders
+    resources :branches, only: [:index]
 
     get 'carts/:id' => 'carts#show', as: 'cart'
     delete 'carts/:id' => 'carts#destroy'

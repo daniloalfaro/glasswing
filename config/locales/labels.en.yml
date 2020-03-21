@@ -1,0 +1,17 @@
+en:
+  labels:
+    ingredients: Ingredients
+    specialty: Especialty
+    save: Save
+    pizza_name: Put the name of your pizza
+    pizza_description: Describe your pizza
+    customized: Custom
+    new_pizza: New Pizza
+    pizza_created: Created Pizza
+    pizza_updated: Updated Pizza
+    pizza_destroyed: Deleted Pizza
+    my_cart: My shopping cart
+    my_order: My order
+    my_orders: My orders
+    orders: Orders
+    languages: Languages

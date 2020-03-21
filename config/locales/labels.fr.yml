@@ -1,0 +1,17 @@
+fr:
+  labels:
+    ingredients: Ingrédients
+    specialty: Spécialité
+    save: enregistrer
+    pizza_name: entrez le nom de votre pizza
+    pizza_description: Décrivez votre pizza
+    customized: personnalisé
+    new_pizza: Nouvelle pizza
+    pizza_created: Pizza créée
+    pizza_updated: pizza mise à jour
+    pizza_destroyed: Pizza supprimée
+    my_cart: Mon panier
+    my_order: Mon reçu
+    my_orders: Mes commandes
+    orders: Commandes
+    languages: Langues

@@ -27,3 +27,5 @@ class Pizza < ApplicationRecord
     prices.sum
   end
 end
+
+Order.includes(:pizzas, :ingredients).order('COUNT(ingredients.id) DESC')
