@@ -95,6 +95,20 @@ end
   pizzas = User.find(user_id).pizzas.pluck(:id)
   cart = Cart.create
 
+  unless User.find(user_id).pizzas.count == 0
+    3.times do
+      info = Faker::Food.unique.dish
+
+      Pizza.create(
+        user_id: user_id,
+        name: info,
+        description: info,
+        specialty_id: Specialty.pluck(:id).sample,
+        size_id: Size.pluck(:id).sample
+      )
+    end
+  end
+
   how_many_items.times do
     LineItem.create(
       quantity: rand(1..9),
