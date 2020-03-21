@@ -2,7 +2,7 @@
 
 class OrdersController < ApplicationController
   def index
-    @orders = Order.all
+    @orders = Order.where(user_id: params[:user_id])
   end
 
   def show

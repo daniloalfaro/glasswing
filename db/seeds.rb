@@ -6,15 +6,29 @@ AdminUser.create!(
   password_confirmation: '123456789'
 )
 
-User.create!(
-  email: 'user@example.com',
-  password: '123456789',
-  password_confirmation: '123456789'
-)
+50.times do |i|
+  User.create!(
+    email: "user#{i}@example.com",
+    password: '123456789',
+    password_confirmation: '123456789'
+  )
+end
 
-25.times do
+# image_data = File.read(Rails.root + 'db/seed_images/beef.png')
+# t = Ingredient.create!(  name: "Beef",  price: rand(0.01..6.99),  image: Base64.encode64(image_data))
+
+# file:///home/drakedalfa/projects/glasswing/rails2/pizzapp/db/seed_images/beef.png
+# file:///home/drakedalfa/projects/glasswing/rails2/pizzapp/db/seed_images/chesse.jpeg
+# file:///home/drakedalfa/projects/glasswing/rails2/pizzapp/db/seed_images/pepperoni.png
+# file:///home/drakedalfa/projects/glasswing/rails2/pizzapp/db/seed_images/peppers.jpg
+# file:///home/drakedalfa/projects/glasswing/rails2/pizzapp/db/seed_images/pineapple.png
+# file:///home/drakedalfa/projects/glasswing/rails2/pizzapp/db/seed_images/salame.jpeg
+# file:///home/drakedalfa/projects/glasswing/rails2/pizzapp/db/seed_images/tomatoes.jpg
+# file:///home/drakedalfa/projects/glasswing/rails2/pizzapp/db/seed_images/tomatoesjpg
+
+["Beef", "Cheesse", "Pepeperoni", "Peppers", "Pineapple", "Salame", "Tomatoes"].each do |ingredient|
   Ingredient.create(
-    name: Faker::Food.unique.ingredient,
+    name: ingredient,
     price: rand(0.01..6.99)
   )
 end
@@ -38,4 +52,40 @@ end
     name: Faker::Address.unique.community,
     address: Faker::Address.full_address
   )
+end
+
+40.times do
+  user = User.pluck(:id).sample
+  info = Faker::Food.unique.dish
+
+  Pizza.create(
+    user_id: user,
+    name: info,
+    description: info,
+    specialty_id: Specialty.pluck(:id).sample,
+    size_id: Size.pluck(:id).sample
+  )
+end
+
+250.times do
+  how_many_items = rand(1..12)
+  user_id = User.pluck(:id).sample
+  pizzas = User.find(user_id).pizzas.pluck(:id)
+  cart = Cart.create
+
+  how_many_items.times do
+    LineItem.create(
+      quantity: rand(1..9),
+      pizza_id: pizzas.sample,
+      cart_id: cart.id
+    )
+  end
+
+  order = Order.new(user_id: user_id)
+  cart.line_items.each do |item|
+    order.line_items << item
+    item.cart_id = nil
+  end
+  order.total = order.sub_total
+  order.save
 end
