@@ -42,7 +42,7 @@ end
 
 10.times do
   Specialty.create(
-    name: Faker::Food.unique.dish,
+    name: Faker::Food.dish,
     price: rand(2.35..8.99)
   )
 end
@@ -56,7 +56,7 @@ end
 
 40.times do
   user = User.pluck(:id).sample
-  info = Faker::Food.unique.dish
+  info = Faker::Food.dish
 
   Pizza.create(
     user_id: user,
@@ -97,7 +97,7 @@ end
 
   unless User.find(user_id).pizzas.count == 0
     3.times do
-      info = Faker::Food.unique.dish
+      info = Faker::Food.dish
 
       Pizza.create(
         user_id: user_id,
