@@ -54,7 +54,19 @@ end
   )
 end
 
-40.times do
+User.all.each do |user|
+  info = Faker::Food.dish
+
+  Pizza.create(
+    user_id: user.id,
+    name: info,
+    description: info,
+    specialty_id: Specialty.pluck(:id).sample,
+    size_id: Size.pluck(:id).sample
+  )
+end
+
+80.times do
   user = User.pluck(:id).sample
   info = Faker::Food.dish
 
