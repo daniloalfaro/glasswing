@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class PizzasController < ApplicationController
-  before_action :authenticate_user!
-
   before_action :set_pizza, only: %i[show edit update destroy]
 
   def index

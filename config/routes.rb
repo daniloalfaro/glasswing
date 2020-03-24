@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # get 'orders/index'
-  # get 'orders/show'
-  # get 'orders/new'
-  # get 'carts/show'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
