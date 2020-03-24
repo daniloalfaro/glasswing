@@ -36,5 +36,9 @@
           %td
           %td
           %td
+            %a.btn.btn-outline-danger{href: "#{user_orders_path}", 'data-method': "post", :role => "button"}
+              %i.fa.fa-dollar-sign
+              = " #{t('labels.pay')}"
+
             %a{href: "#{user_orders_path}", 'data-method': "post", :role => "button"}
               = number_to_currency(@cart.sub_total, locale: :en)

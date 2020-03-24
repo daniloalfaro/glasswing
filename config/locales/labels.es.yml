@@ -21,7 +21,8 @@ es:
     menu: Menu
     begin: Inicio
     mypizzas: Mis pizzas
-    my_orders: Mis Pedidos
+    myorders: Mis Pedidos
     branches: Sucursales
     exit: Salir
     login: Iniciar sesion
+    pay: Pagar
