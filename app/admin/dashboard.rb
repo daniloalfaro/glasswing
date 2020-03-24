@@ -42,6 +42,9 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
 
+      controller do
+        skip_before_filter :authorize_user!
+      end
     # columns do
     #   column do
     #     panel "Recent Posts" do
