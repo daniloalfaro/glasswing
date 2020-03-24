@@ -24,15 +24,15 @@
               t("labels.begin")
               %span.sr-only (current)
           %li.nav-item.dropdown
-            %a#dropdown01.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#"} =t("labels.menu")
+            %a#dropdown01.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#"} "#{t('labels.menu')}"
             .dropdown-menu{"aria-labelledby" => "dropdown01"}
               - if current_user
-                %a.dropdown-item{:href => "#{user_pizzas_url(current_user)}"} =t("labels.mypizzas")
-                %a.dropdown-item{:href => "#{user_orders_url(current_user)}"} =t("labels.myorders")
-                %a.dropdown-item{:href => "#{user_branches_url(current_user)}"} =t("labels.branches")
-                %a.dropdown-item{:href => "#{destroy_user_session_url}", :'data-method' => "delete"} =t("labels.exit")
+                %a.dropdown-item{:href => "#{user_pizzas_url(current_user)}"} "#{t('labels.mypizzas')}"
+                %a.dropdown-item{:href => "#{user_orders_url(current_user)}"} "#{t('labels.myorders')}"
+                %a.dropdown-item{:href => "#{user_branches_url(current_user)}"} "#{t('labels.branches')}"
+                %a.dropdown-item{:href => "#{destroy_user_session_url}", :'data-method' => "delete"} "#{t('labels.exit')}"
               - else
-                %a.dropdown-item{:href => "#{new_user_session_url}"} =t("labels.signin")
+                %a.dropdown-item{:href => "#{new_user_session_url}"} "#{t('labels.signin')}"
 
         - if current_user
           %ul.navbar-nav.float-left
