@@ -2,12 +2,10 @@
 
 Rails.application.routes.draw do
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  root 'pizzas#index'
-
-  devise_for :users
+  root 'welcome#index'
 
   resources :users do
     resources :pizzas

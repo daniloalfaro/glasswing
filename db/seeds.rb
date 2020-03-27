@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-AdminUser.create!(
+User.create!(
   email: 'admin@example.com',
   password: '123456789',
-  password_confirmation: '123456789'
+  password_confirmation: '123456789',
+  superadmin: true
 )
 
 50.times do |i|
