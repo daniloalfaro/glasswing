@@ -22,4 +22,5 @@
   .col-12
     #pizza_ingredients.form-group.text-center.collapse.multi-collapse
       = f.collection_check_boxes( :ingredient_ids, @ingredients, :id, :name, bootstrap: {check_inline: true}, class: "custom-control-input") do |i|
-        = i.label(:"data-value" => i.value, class: "") { image_tag(url_for(i.object.image), class: "d-block") + " " + i.check_box + i.text + " " + number_to_currency(i.object.price, locale: :en) }
+        - img = i.object.image.attached? ? i.object.image : "/assets/none.png"
+        = i.label(:"data-value" => i.value, class: "") { image_tag(url_for(img), class: "d-block") + " " + i.check_box + i.text + " " + number_to_currency(i.object.price, locale: :en) }
