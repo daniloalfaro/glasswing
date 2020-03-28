@@ -25,9 +25,9 @@
               %td
                 =pizza.size ? pizza.size.name : ''
               %td
-                =pizza.specialty ? pizza.specialty.name : 'Personalizada'
+                =pizza.specialty_including_deleted ? pizza.specialty_including_deleted.name : 'Personalizada'
               %td
-                = pizza.ingredients.any? ? pizza.ingredient_names : ""
+                = pizza.ingredients.with_deleted.any? ? pizza.ingredient_names : ""
               %td
                 = number_to_currency(pizza.price_final, locale: :en)
               %td

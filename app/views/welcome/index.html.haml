@@ -1,0 +1,16 @@
+%br
+%br
+%br
+%h2.display-1
+  %i.fa.fa-laugh-wink
+  = t("labels.welcome")
+%h1.display-1
+  = current_user.email
+  %i.fa.fa-pizza-slice
+.text-center
+  %br
+  %br
+  %br
+  %br
+  %a.btn.btn-success{href: "#{user_pizzas_path(current_user)}", role: "button"}
+    =t("labels.mypizzas")
