@@ -73,3 +73,5 @@ gem 'faker'
 gem 'haml-rails', '~> 2.0'
 
 gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
+
+gem 'aws-sdk-s3', require: false
