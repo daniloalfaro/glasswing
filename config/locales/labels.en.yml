@@ -11,7 +11,7 @@ en:
     pizza_updated: Updated Pizza
     pizza_destroyed: Deleted Pizza
     my_cart: My shopping cart
-    my_order: My order
+    my_order: My order from %{date}
     my_orders: My orders
     orders: Orders
     languages: Languages
@@ -29,3 +29,17 @@ en:
     welcome: Welcome
     mypizzas: My Pizzas
     description: Tell us about your pizza
+
+    pizzas_list: List of created pizzas
+    create_a_new_pizza: Create a new pizza
+    buy_this_pizza: Buy %{pizza_name} Pizza
+    edit_this_pizza: Modify %{pizza_name} Pizza
+    delete_this_pizza: Delete %{pizza_name} Pizza
+    add_one_pizza: Add one Pizza
+    remove_one_pizza: Remove one Pizza
+    delete_this_line: Delete this line
+    buy_all_shopping_cart_pizzas: Buy all shopping cart Pizzas
+    branches_list: Branches list
+
+    change_language: Cambiar lenguaje
+    change_language_: Change language

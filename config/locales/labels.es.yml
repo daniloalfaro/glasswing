@@ -11,7 +11,7 @@ es:
     pizza_updated: Pizza actualizada
     pizza_destroyed: Pizza eliminada
     my_cart: Mi carrito de compras
-    my_order: Mi recibo
+    my_order: Pedido realizado el %{date}
     my_orders: Mis pedidos
     orders: Ordenes
     languages: Lenguajes
@@ -29,3 +29,17 @@ es:
     welcome: Bienvenido
     mypizzas: Mis Pizzas
     description: Cuentanos sobre tu pizza
+
+    pizzas_list: Listado de pizzas creadas
+    create_a_new_pizza: Crear una nueva pizza
+    buy_this_pizza: Comprar Pizza %{pizza_name}
+    edit_this_pizza: Modificar Pizza %{pizza_name}
+    delete_this_pizza: Eliminar Pizza %{pizza_name}
+    add_one_pizza: Agregar una Pizza
+    remove_one_pizza: Quitar una Pizza
+    delete_this_line: Eliminar esta linea
+    buy_all_shopping_cart_pizzas: Comprar todas las Pizzas en el carrito de compra
+    branches_list: Listado de sucursales
+
+    change_language: Cambiar lenguaje
+    change_language_: Change language

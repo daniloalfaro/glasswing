@@ -37,12 +37,12 @@
         - if current_user
           %ul.navbar-nav.float-left
             %li.nav-item.active
-              %a.nav-link{:href => "#{user_cart_url(current_user, @current_cart)}"}
+              %a.nav-link{:href => "#{user_cart_url(current_user, @current_cart)}", 'data-toggle': "tooltip", 'data-placement': "top", 'title': t("labels.buy_all_shopping_cart_pizzas")}
                 %i.fa.fa-shopping-cart
                 = number_to_currency(@current_cart.sub_total, locale: :en)
 
-        = link_to image_tag("spain-icon.png"), "?locale=es"
-        = link_to image_tag("usa-icon.png"), "?locale=en"
+        = link_to image_tag("spain-icon.png"), "?locale=es", 'data-toggle': "tooltip", 'data-placement': "top", 'title': t("labels.change_language")
+        = link_to image_tag("usa-icon.png"), "?locale=en", 'data-toggle': "tooltip", 'data-placement': "top", 'title': t("labels.change_language_")
         -#= link_to image_tag("france-icon.png"), "?locale=fr"
 
 

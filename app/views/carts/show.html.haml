@@ -15,7 +15,7 @@
           %th{:scope => "col", :width => "20%"} Total
           %th{:scope => "col", :width => "20%"}
       %tbody
-        - @cart.line_items.each do |line_item|
+        - @cart.line_items.reorder(:id).each do |line_item|
           %tr
             %td
               = line_item.pizza.name
@@ -27,19 +27,19 @@
               = number_to_currency(line_item.total_price, locale: :en)
             %td
               .btn-group
-                %a.btn.btn-outline-info{href: "#{user_line_item_add_path(:id => line_item)}", 'data-method': "post", role: "button"}
+                %a.btn.btn-outline-info{href: "#{user_line_item_add_path(:id => line_item)}", 'data-method': "post", role: "button", 'data-toggle': "tooltip", 'data-placement': "top", 'title': t("labels.add_one_pizza")}
                   %i.fa.fa-plus-square
-                %a.btn.btn-outline-primary{href: "#{user_line_item_reduce_path(:id => line_item)}", 'data-method': "post", role: "button"}
+                %a.btn.btn-outline-primary{href: "#{user_line_item_reduce_path(:id => line_item)}", 'data-method': "post", role: "button", 'data-toggle': "tooltip", 'data-placement': "top", 'title': t("labels.remove_one_pizza")}
                   %i.fa.fa-minus-square
-                %a.btn.btn-outline-danger{href: "#{user_line_item_path(current_user, line_item)}", 'data-method': "delete", :role => "button"}
+                %a.btn.btn-outline-danger{href: "#{user_line_item_path(current_user, line_item)}", 'data-method': "delete", :role => "button", 'data-toggle': "tooltip", 'data-placement': "top", 'title': t("labels.delete_this_line")}
                   %i.fa.fa-backspace
         %tr
           %td
           %td
           %td
-            %a.btn.btn-outline-danger{href: "#{user_orders_path}", 'data-method': "post", :role => "button"}
+            %a.btn.btn-outline-danger{href: "#{user_orders_path}", 'data-method': "post", :role => "button", 'data-toggle': "tooltip", 'data-placement': "top", 'title': t("labels.buy_all_shopping_cart_pizzas")}
               %i.fa.fa-dollar-sign
               = " #{t('labels.pay')}"
           %td
-            %a{href: "#{user_orders_path}", 'data-method': "post", :role => "button"}
+            %a{href: "#{user_orders_path}", 'data-method': "post", :role => "button", 'data-toggle': "tooltip", 'data-placement': "top", 'title': t("labels.buy_all_shopping_cart_pizzas")}
               = number_to_currency(@cart.sub_total, locale: :en)

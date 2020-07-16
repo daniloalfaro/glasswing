@@ -1,7 +1,9 @@
 .row
   .col-12
-    %h1
-      = t("labels.my_order")
+    %h2.text-center
+      = t("labels.my_order", date: l(@order.created_at, format: :long))
+    %br
+    %br
 .row
   .col-12
     %table.table.table-striped
